@@ -1,0 +1,24 @@
+#use dct to read code 3 bases at a time
+#if the three letter code doesn't exist in library, return '_'
+#how to combine items in a list into a single string?
+def translate(seq, code): 
+    gc = read_code('genetic_code.csv')
+    codons = []
+    for i in range(0,len(seq),3):
+        codon = seq[i:i+3]
+        codons.append(codon)
+    #print('codons: ', codons)
+    #print(code)
+    list_aa= []
+    for xxx in codons:
+        #if xxx in code == True:
+        if xxx in code.keys():
+            #print(xxx, code[xxx])
+            list_aa.append(code[xxx])
+        else:
+            #print('_')
+            list_aa.append('_')
+    #print(list_aa)
+    string_aa = ''.join(list_aa)
+    print('Amino acids: ', string_aa)
+    return(string_aa)
