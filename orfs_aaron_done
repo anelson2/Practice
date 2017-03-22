@@ -1,0 +1,48 @@
+def orfs(dna, gc):
+    rdna = reverse_complement(dna)
+    
+    print(dna,rdna)
+    #bases_orf = []
+    aa_orf= []  #make a dictionary intead of a list
+    bs1 = []  # base seq 1
+    bs2 = []
+    bs3 = []
+    bsrev1 = []
+    bsrev2 = []
+    bsrev3 = []
+    for s in [dna]:
+        for i in range(0,len(s),3):    #for some reason, length of s is the number of letters in DNA; not 1
+            orf1 = s[i:i+3]
+            orf2 = s[i+1:i+4]
+            orf3 = s[i+2:i+5]
+            bs1.append(orf1)
+            bs2.append(orf2)
+            bs3.append(orf3)
+    print('bs1: ',bs1)
+            
+    for s in [rdna]:
+        for i in range(0,len(s),3):    
+            orfrev1 = s[i:i+3]
+            orfrev2 = s[i+1:i+4]
+            orfrev3 = s[i+2:i+5]
+            bsrev1.append(orfrev1)
+            bsrev2.append(orfrev2)
+            bsrev3.append(orfrev3)
+    print('bsrev1: ', bsrev1)
+    print('bsrev2: ', bsrev2)
+    print('bsrev3: ', bsrev3)
+    
+    rdfms= [bs1, bs2, bs3, bsrev1, bsrev2, bsrev3]
+    print('rdfms: ', rdfms)
+    
+    aa = []
+    for set in rdfms:
+        setList = ''
+        for codon in set:
+            if codon in gc:
+                setList+=(gc[codon])
+            else:
+                setList+= '_'
+        aa.append(setList)
+    print('aa: ', aa, 'length: ', len(aa))
+    return (aa)
