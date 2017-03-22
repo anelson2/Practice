@@ -1,0 +1,18 @@
+comp = { 'A' : 'T', 'T' : 'A', 'C' : 'G', 'G' : 'C' }
+
+# Updated Mar 1:  this is a "stub" created so we can test the reverse_complement
+# function.  For now just return the reverse string, later we'll find the 
+# complement of each letter.
+
+def reverse_complement(s):
+    lst = list(s)
+    lst.reverse()
+    baserev= ''.join(lst)
+    #return baserev
+    newbase= []
+    for bs in baserev:
+        if bs in comp.keys():
+            newbase.append(comp[bs])
+    #print(newbase)
+    rev_comp= ''.join(newbase)
+    return rev_comp
