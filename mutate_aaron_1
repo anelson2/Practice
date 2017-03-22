@@ -1,6 +1,6 @@
 from random import randint
 
-def random_difference(ch):
+def random_difference(ch):                #I added this in because I was needing to reload the "random difference" cell alot at one point.
     bases = ['A','T','C', 'G']
     #target = bases.index(ch)
     bases.remove(ch)
@@ -9,7 +9,7 @@ def random_difference(ch):
     print ('new base: ', new_base)
     return (new_base)
 
-def mutate(dna, n):
+def mutate(dna, n):                    #actual script starts here
     
     if n > len(dna)/2:
         print('too many differences')
@@ -32,7 +32,7 @@ def mutate(dna, n):
     new_string = dna
     enoughDiffs = False #var used to track whether we've made enuf diffs
 
-    loop = 0     
+    loop = 0                          #this loop part keeps the script from going into an infinite loop. 
     while not enoughDiffs:
         loop+= 1
         if loop > n*4:
