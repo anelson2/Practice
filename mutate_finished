@@ -1,0 +1,49 @@
+def mutate(dna, n):
+    
+    from random import randint
+    
+    new_string = dna
+    enoughDiffs = False #var used to track whether we've made enuf diffs
+    #print("falsiying enoughDiffs")
+    
+    if n > len(dna)/2:
+        print('too many differences')
+        return None
+    
+    def enoughDifferences():
+        differences = 0
+        for index in range(len(new_string)):
+            if new_string[index] != dna[index]:
+                differences += 1
+                #print('differences: ', differences)
+        if differences < n:
+            print ('differences less than n')
+            print('differences: ', differences)
+            return False
+        else:            
+            print('differences: ', differences)
+            return True
+            #return new_string
+
+    loop = 0     
+    while not enoughDiffs:
+        print() #blank line at beginning of loop
+        loop+= 1
+        if loop > n*4:
+            print('exiting infinite loop')
+            enoughDiffs = True
+        randBaseInd = randint(0,len(dna)-1)
+        #print('randBaseInd: ', randBaseInd)        
+        mutation = random_difference(dna[randBaseInd])   #runs random_difference on a random base
+        before = new_string[:randBaseInd]          #next 3 lines: concatenation of new string   
+        after = new_string[randBaseInd +1:]
+        new_string= before + mutation + after
+        enoughDiffs = enoughDifferences()                          #run enoughDifferences loop,
+
+        print('new string: ', new_string)
+        print('loops: ', loop)
+        #print('differences: ', differences)
+    
+    #print ('len dna: ', len(dna))
+    print('n: ', n)
+    return new_string
